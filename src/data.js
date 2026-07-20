@@ -139,8 +139,8 @@ export const KNOCKOUT_STAGE = [
   { id: 101, round: 'SF', date: '2026-07-14', time: '06:00', home: 'France', away: 'Spain', completed: true, homeScore: 0, awayScore: 2, venue: 'Arlington' },
   { id: 102, round: 'SF', date: '2026-07-15', time: '06:00', home: 'England', away: 'Argentina', completed: true, homeScore: 1, awayScore: 2, venue: 'Atlanta' },
   // --- THIRD PLACE & FINAL ---
-  { id: 103, round: '3RD', date: '2026-07-18', time: '06:00', home: 'France', away: 'Loser M102', completed: false, venue: 'Miami Gardens' },
-  { id: 104, round: 'FINAL', date: '2026-07-19', time: '06:00', home: 'Spain', away: 'Winner M102', completed: false, venue: 'East Rutherford' },
+  { id: 103, round: '3RD', date: '2026-07-18', time: '06:00', home: 'France', away: 'England', completed: true, homeScore: 4, awayScore: 6, venue: 'Miami Gardens' },
+  { id: 104, round: 'FINAL', date: '2026-07-19', time: '06:00', home: 'Spain', away: 'Argentina', completed: true, homeScore: 1, awayScore: 0, aet: true, venue: 'East Rutherford' },
 ];
 
 // ============================================================
