@@ -202,7 +202,7 @@ function ScheduleTab({ onOpenSquad }) {
   });
   const filteredDates = Object.keys(dates).sort();
 
-  // Compute accuracy using real-time Poisson predictions
+  // Compare current Poisson predictions with completed group-stage results
   const completedMatches = SCHEDULE.filter(m => m.completed);
   let correct = 0;
   completedMatches.forEach(m => {
@@ -224,7 +224,7 @@ function ScheduleTab({ onOpenSquad }) {
     <div>
       {/* Accuracy header */}
       <div style={{ textAlign: 'center', marginBottom: 20, padding: '12px 16px', background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)', borderRadius: 12, border: '1px solid #1e293b' }}>
-        <span style={{ fontSize: 13, color: '#94a3b8' }}>已赛 {completedMatches.length} 场 · 预测准确率 </span>
+        <span style={{ fontSize: 13, color: '#94a3b8' }}>已赛 {completedMatches.length} 场 · 回测准确率 </span>
         <span style={{ fontSize: 20, fontWeight: 900, color: accuracy >= 50 ? '#22c55e' : accuracy >= 30 ? '#e07820' : '#ef4444' }}>{accuracy}%</span>
         <span style={{ fontSize: 13, color: '#64748b' }}> ({correct}/{completedMatches.length})</span>
       </div>
