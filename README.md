@@ -1,71 +1,20 @@
-# Getting Started with Create React App
+# 2026 世界杯赛果预测
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+用 React 浏览赛程、比分和积分榜，并根据球队 Elo 和 Poisson 进球分布估算主胜、平局与客胜概率。网页启动后会尝试从 ESPN 更新未标记为完赛的比分，内置数据可用于离线浏览。
 
-## Available Scripts
+## 本地运行
 
-In the project directory, you can run:
+```bash
+npm ci
+npm start
+```
 
-### `npm start`
+浏览器打开 [localhost:3000](http://localhost:3000)。执行 `npm test -- --watchAll=false` 运行测试，执行 `npm run build` 生成静态站点。
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 预测与回测
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [`src/data.js`](src/data.js) 保存内置赛程、赛果和 Elo。
+- [`src/App.js`](src/App.js) 计算进球分布和胜平负概率，并渲染赛程与自定义预测。
+- [`evaluate_and_improve.py`](evaluate_and_improve.py) 是单独的 Python 评估入口。前端直接使用 JavaScript 计算预测，运行网页无需 Python。
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
+赛程页的「回测准确率」以已结束的内置小组赛为样本，用当前 Elo 和预测逻辑重新计算胜平负，再与已记录的结果比较。页面同时显示命中场次和样本量。要评估赛前表现，需要使用开赛前保存的预测和评级快照。
